@@ -1,5 +1,13 @@
 # Playground for learning WebSphere Liberty and PostgreSQL
 
+## Prerequisites
+
+The examples all use IntelliJ Idea, but any other
+IDE should do equally well.
+
+You need Docker Desktop.
+Download and install it from https://www.docker.com/products/docker-desktop/ .
+
 ## Initialising
 
 From a Mac OS or Linux command line, run the script
@@ -49,4 +57,7 @@ inside the container:
 
 `/liberty/wlp/bin/featureUtility installServerFeatures SERVERNAME`
 
-``
+`/liberty/wlp/bin/installUtility install SERVERNAME`
+
+After this it should be possible to start the
+server SERVERNAME successfully.
