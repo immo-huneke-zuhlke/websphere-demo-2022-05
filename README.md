@@ -4,6 +4,9 @@
 
 The examples all use IntelliJ Idea, but any other
 IDE should do equally well.
+After cloning the repository, it is advisable to
+use IntelliJ's File --> Open menu command to
+select the folder that encloses the cloned repo.
 
 You need Docker Desktop.
 Download and install it from https://www.docker.com/products/docker-desktop/ .
@@ -16,6 +19,8 @@ From a Mac OS or Linux command line, run the script
 ## Starting and stopping
 
 Start the container by running the script `./start.sh`.
+Note that this will monopolise a terminal.
+Open another terminal for the next command.
 
 Connect to the container by running `./exec.sh`.
 
@@ -23,7 +28,7 @@ Stop the container by running the script `./stop.sh`.
 
 When the container is running, you can access the default server like this:
 
-http://localhost/openapi/ui/
+http://localhost:9080/openapi/ui/
 
 See the standard output from the server to check what other endpoints are exposed.
 
@@ -61,3 +66,10 @@ inside the container:
 
 After this it should be possible to start the
 server SERVERNAME successfully.
+
+Connect to it using the url
+http://localhost/SERVERNAME/xyz-servlet
+
+(where the name of the servlet can be found in
+the `index.jsp` file auto-generated for you
+by the IDE when you created the servlet project).
