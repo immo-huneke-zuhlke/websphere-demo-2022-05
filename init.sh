@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 cd "${0:A:h}"
+docker pull icr.io/appcafe/websphere-liberty:latest
 docker run --rm --name websphere_liberty icr.io/appcafe/websphere-liberty:latest &
 sleep 15
 rm -rf out
