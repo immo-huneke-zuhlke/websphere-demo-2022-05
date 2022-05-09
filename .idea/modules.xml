@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/helloworld/helloworld.iml" filepath="$PROJECT_DIR$/helloworld/helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usermanager/usermanager.iml" filepath="$PROJECT_DIR$/usermanager/usermanager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/websphere-demo-2022-05.iml" filepath="$PROJECT_DIR$/.idea/websphere-demo-2022-05.iml" />
     </modules>
   </component>
