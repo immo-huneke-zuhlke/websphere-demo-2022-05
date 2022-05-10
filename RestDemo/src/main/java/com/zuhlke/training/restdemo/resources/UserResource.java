@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/user")
 public class UserResource {
@@ -18,11 +19,15 @@ public class UserResource {
     UserService userService;
 
     @GET
-    @Path("{id}")
+    @Path("/{id : (\\d+)?}")
     @Produces( MediaType.APPLICATION_JSON)
-    public Response retrieveSomething(@PathParam("id") String id) {
-        if(id == null || id.trim().length() == 0) {
-            return Response.serverError().entity("ID cannot be blank").build();
+    public Response getUser(@PathParam("id") String id) {
+        if( id == null || id.trim().length() == 0 ) {
+            List<User> users = userService.getUsers();
+            if(users == null) {
+                return Response.status(Response.Status.NOT_FOUND).entity("Something went wrong!!!").build();
+            }
+            return Response.status(Response.Status.ACCEPTED).entity(users).build();
         }
         User user = userService.getUser(Long.parseLong(id));// new User(1,"test","test email");
         if(user == null) {

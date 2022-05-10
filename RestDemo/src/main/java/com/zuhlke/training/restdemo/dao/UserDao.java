@@ -26,4 +26,20 @@ public class UserDao extends PersistenceManager{
             closeEntityManager();
         }
     }
+
+    public List<User> getUsers() {
+        try {
+            String sql = "SELECT c FROM User c ";
+            Query query = getEntityManager().createQuery(sql, User.class);
+            List<User> users = query.getResultList();
+            for (User user : users) {
+                System.out.println(user);
+            }
+            return users;
+        }catch(Exception ex){
+            return null;
+        }finally{
+            closeEntityManager();
+        }
+    }
 }

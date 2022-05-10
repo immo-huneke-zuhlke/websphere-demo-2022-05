@@ -9,7 +9,9 @@ import java.util.Set;
 
 @ApplicationPath("/api")
 public class RestDemoApplication extends Application {
-
     @Override
-    public Set<Class<?>> getClasses() { Set<Class<?>> s = new HashSet<Class<?>>(); s.add(UserResource.class); return s;}
+    public Set<Class<?>> getClasses() { Set<Class<?>> s = new HashSet<Class<?>>();
+        s.add(UserResource.class);
+        s.add(CORSFilter.class);
+        return s;}
 }
