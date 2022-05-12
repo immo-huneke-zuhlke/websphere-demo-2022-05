@@ -1,0 +1,7 @@
+###
+
+GET http://localhost/restdemo/api/user
+
+###
+
+GET http://localhost/restdemo/api/user/1
