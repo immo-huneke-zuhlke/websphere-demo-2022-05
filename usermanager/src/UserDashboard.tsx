@@ -1,34 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import UserService from './UserService';
 
 export default function UserDashboard() {
     const [users, setUsers] = useState<any[]>([])
     const [userDetails, setUserDetails] = useState({id: "", name: "", email: ""});
     const hostUrl = "http://localhost/restdemo/";
     const userEndpoint = "api/user/";
+    const userService =  UserService(hostUrl);
     const userApiGetAll = hostUrl + userEndpoint;
     var loaded = false;
     useEffect(() => {
         if (!loaded) {
-            axios.get(userApiGetAll)
-                .then(res => {
-                    const usersRes = res.data;
-                    setUsers(usersRes);
-                })
+            userService.getUsers().then(setUsers);
             loaded = true;
         }
     }, []);
 
     const getUserDetails = (id: string) => {
-        axios.get(userApiGetAll + "/" + id)
-            .then(res => {
-                const usersRes = res.data;
-                setUserDetails(usersRes);
-            })
+        userService.getUserDetails(id).then(setUserDetails);
     }
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
+
     // @ts-ignore
     return (
         <>

@@ -1,0 +1,98 @@
+I, [2022-05-12T18:25:48.440919 #27736]  INFO -- : Registered expected interaction GET /restdemo/api/user
+D, [2022-05-12T18:25:48.441253 #27736] DEBUG -- : {
+  "description": "a GET request to list users",
+  "providerState": "provider allows list of users",
+  "request": {
+    "method": "GET",
+    "path": "/restdemo/api/user",
+    "headers": {
+      "Accept": "application/json, text/plain, */*"
+    }
+  },
+  "response": {
+    "status": 202,
+    "headers": {
+      "Content-Type": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "application/json; charset=utf-8",
+          "matcher": {"json_class":"Regexp","o":0,"s":"application\\/json; *charset=utf-8"}
+        }
+      }
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": [
+        {
+          "email": "gpotawad@gmail.com",
+          "id": 1,
+          "name": "Gayatri"
+        },
+        {
+          "id": 2,
+          "name": "Immo"
+        }
+      ]
+    }
+  }
+}
+I, [2022-05-12T18:25:48.463373 #27736]  INFO -- : Received request GET /restdemo/api/user
+D, [2022-05-12T18:25:48.463503 #27736] DEBUG -- : {
+  "path": "/restdemo/api/user",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Origin": "http://localhost",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:8080",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2022-05-12T18:25:48.463673 #27736]  INFO -- : Found matching response for GET /restdemo/api/user
+D, [2022-05-12T18:25:48.463793 #27736] DEBUG -- : {
+  "status": 202,
+  "headers": {
+    "Content-Type": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "application/json; charset=utf-8",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "application\\/json; *charset=utf-8"
+        }
+      }
+    }
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": [
+      {
+        "email": "gpotawad@gmail.com",
+        "id": 1,
+        "name": "Gayatri"
+      },
+      {
+        "id": 2,
+        "name": "Immo"
+      }
+    ]
+  }
+}
+I, [2022-05-12T18:25:48.499011 #27736]  INFO -- : Verifying - interactions matched
+I, [2022-05-12T18:25:48.503911 #27736]  INFO -- : Cleared interactions
+I, [2022-05-12T18:25:48.508581 #27736]  INFO -- : Verifying - interactions matched
+I, [2022-05-12T18:25:48.513499 #27736]  INFO -- : Cleared interactions
+I, [2022-05-12T18:25:48.520998 #27736]  INFO -- : Verifying - interactions matched
+I, [2022-05-12T18:25:48.526086 #27736]  INFO -- : Cleared interactions
+I, [2022-05-12T18:25:48.531568 #27736]  INFO -- : Updating pact for RestDemo at /Users/gapo/Project/GitHub/websphere-demo-2022-05/usermanager/pacts/usermanager-restdemo.json
+I, [2022-05-12T18:25:48.540050 #27736]  INFO -- : *****************************************************************************
+I, [2022-05-12T18:25:48.540187 #27736]  INFO -- : Updating existing file ./Users/gapo/Project/GitHub/websphere-demo-2022-05/usermanager/pacts/usermanager-restdemo.json as pactfile_write_mode is :update
+I, [2022-05-12T18:25:48.540221 #27736]  INFO -- : Only interactions defined in this test run will be updated.
+I, [2022-05-12T18:25:48.540245 #27736]  INFO -- : As interactions are identified by description and provider state, pleased note that if either of these have changed, the old interactions won't be removed from the pact file until the specs are next run with :pactfile_write_mode => :overwrite.
+I, [2022-05-12T18:25:48.540310 #27736]  INFO -- : *****************************************************************************

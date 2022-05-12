@@ -1,0 +1,52 @@
+{
+  "consumer": {
+    "name": "usermanager"
+  },
+  "provider": {
+    "name": "RestDemo"
+  },
+  "interactions": [
+    {
+      "description": "a GET request to list users",
+      "providerState": "provider allows list of users",
+      "request": {
+        "method": "GET",
+        "path": "/restdemo/api/user",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        }
+      },
+      "response": {
+        "status": 202,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "email": "gpotawad@gmail.com",
+            "id": 1,
+            "name": "Gayatri"
+          },
+          {
+            "id": 2,
+            "name": "Immo"
+          }
+        ],
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
