@@ -1,0 +1,83 @@
+{
+  "consumer": {
+    "name": "usermanager"
+  },
+  "provider": {
+    "name": "RestDemo"
+  },
+  "interactions": [
+    {
+      "description": "a GET request to list users",
+      "providerState": "database contains two users",
+      "request": {
+        "method": "GET",
+        "path": "/restdemo/api/user",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        }
+      },
+      "response": {
+        "status": 202,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "email": "gpotawad@gmail.com",
+            "id": 1,
+            "name": "Gayatri"
+          },
+          {
+            "id": 2,
+            "name": "Immo"
+          }
+        ],
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a GET request to obtain user details",
+      "providerState": "database contains two users",
+      "request": {
+        "method": "GET",
+        "path": "/restdemo/api/user/1",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        }
+      },
+      "response": {
+        "status": 202,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "email": "gpotawad@gmail.com",
+          "id": 1,
+          "name": "Gayatri"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
