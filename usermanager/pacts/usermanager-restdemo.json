@@ -35,7 +35,7 @@
         "matchingRules": {
           "$.headers.Content-Type": {
             "match": "regex",
-            "regex": "application\\/json; *charset=utf-8"
+            "regex": "application/json"
           },
           "$.body": {
             "match": "type"
@@ -66,7 +66,7 @@
         "matchingRules": {
           "$.headers.Content-Type": {
             "match": "regex",
-            "regex": "application\\/json; *charset=utf-8"
+            "regex": "application/json"
           },
           "$.body": {
             "match": "type"

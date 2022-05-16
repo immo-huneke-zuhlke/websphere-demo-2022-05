@@ -82,7 +82,6 @@
                             <protocol>http</protocol>
                             <host>localhost</host>
                             <port>80</port>
-                            <path>/restdemo</path>
                             <stateChangeUrl>http://localhost:81/restdemotest/setup</stateChangeUrl>
                             <stateChangeTeardown>true</stateChangeTeardown>
                             <pactFileDirectory>../usermanager/pacts</pactFileDirectory>
