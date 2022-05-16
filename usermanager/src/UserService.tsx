@@ -1,10 +1,10 @@
 import axios from "axios";
 function UserService(hostUrl: string) {
     const userEndpoint = "/api/user";
-    const userApiGetAll = hostUrl + userEndpoint;
+    const userApi = hostUrl + userEndpoint;
 
     function getUserDetails (id: string) {
-        return axios.get(userApiGetAll + "/" + id)
+        return axios.get(userApi + "/" + id)
             .then(res => {
                 const usersRes = res.data;
                 return usersRes;
@@ -12,7 +12,15 @@ function UserService(hostUrl: string) {
     }
 
     function getUsers() {
-        return axios.get(userApiGetAll)
+        return axios.get(userApi)
+            .then(res => {
+                const usersRes = res.data;
+                return usersRes;
+            })
+    }
+
+    function saveUser(user : Map<string, any>){
+        return axios.post(userApi, user)
             .then(res => {
                 const usersRes = res.data;
                 return usersRes;
@@ -21,7 +29,8 @@ function UserService(hostUrl: string) {
 
     return {
         'getUserDetails': getUserDetails,
-        'getUsers': getUsers
+        'getUsers': getUsers,
+        'saveUser': saveUser
     }
 }
 export default UserService

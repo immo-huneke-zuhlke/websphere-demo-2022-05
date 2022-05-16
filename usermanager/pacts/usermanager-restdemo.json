@@ -73,6 +73,41 @@
           }
         }
       }
+    },
+    {
+      "description": "a POST request to save a new user",
+      "providerState": "database contains two users",
+      "request": {
+        "method": "POST",
+        "path": "/restdemo/api/user",
+        "headers": {
+          "Accept": "application/json, text/plain, */*"
+        },
+        "body": {
+          "name": "maria",
+          "email": "maria@gmail.com"
+        }
+      },
+      "response": {
+        "status": 202,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "email": "maria@gmail.com",
+          "id": 3,
+          "name": "maria"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {

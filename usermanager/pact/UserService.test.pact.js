@@ -2,6 +2,7 @@ import * as Pact from '@pact-foundation/pact';
 import UserService from "../src/UserService";
 
 const hostUrl = require('./jest.config.js').testURL;
+const newUser = {"name":"maria","email": "maria@gmail.com"};
 
 describe('UserService API', () => {
     const userService = new UserService(hostUrl + "/restdemo");
@@ -63,7 +64,41 @@ describe('UserService API', () => {
         }).then(() => {
             userService.getUserDetails("1")
                 .then(response => {
+                    // eslint-disable-next-line jest/no-conditional-expect
                     expect(response.name).toEqual("Gayatri");
+                })
+                .then(done)
+                .catch(done);
+        });
+    });
+
+    //_______________________ save user api ___________________
+    it('saves a new user', (done) => {
+        global.provider.addInteraction({
+            state: 'database contains two users',
+            uponReceiving: 'a POST request to save a new user',
+            withRequest: {
+                method: 'POST',
+                path: '/restdemo/api/user',
+                body:newUser,
+                headers: {
+                    Accept: 'application/json, text/plain, */*'
+                }
+            },
+            willRespondWith: {
+                status: 202,
+                headers: {
+                    "Content-Type": contentTypeJsonMatcher
+                },
+                body: Pact.Matchers.somethingLike(
+                    {"email": "maria@gmail.com", "id": 3, "name": "maria"}
+                )
+            }
+        }).then(() => {
+            userService.saveUser(newUser)
+                .then(response => {
+                    // eslint-disable-next-line jest/no-conditional-expect
+                    expect(response.name).toEqual(newUser.name);
                 })
                 .then(done)
                 .catch(done);
