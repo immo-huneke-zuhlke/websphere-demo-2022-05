@@ -10,6 +10,10 @@ public class UserService {
     @Inject
     UserDao userDao;
 
+    public User saveUser(User user) {
+        return userDao.saveUser(user);
+    }
+
     public User getUser(long id) {
         return userDao.getUser(id);
     }

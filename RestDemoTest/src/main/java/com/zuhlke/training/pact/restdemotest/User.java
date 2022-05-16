@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "user", schema = "public")
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) // Use AUTO so that we can set the id field when persisting the user
     @Column(name = "id")
     private long id;
 
@@ -23,9 +23,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public User() {
-
-    }
+    public User() {}
 
     public long getId() {
         return id;

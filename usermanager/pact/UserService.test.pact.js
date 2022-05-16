@@ -1,14 +1,15 @@
 import * as Pact from '@pact-foundation/pact';
 import UserService from "../src/UserService";
 
-const hostUrl = require('./jest.config.js').testURL;
-const newUser = {"name":"maria","email": "maria@gmail.com"};
-
 describe('UserService API', () => {
+    const newUser = {"name": "maria", "email": "maria@gmail.com"};
+    const savedUser = {"id": 3};
+    Object.assign(savedUser, newUser);
+    const hostUrl = require('./jest.config.js').testURL;
     const userService = new UserService(hostUrl + "/restdemo");
     const contentTypeJsonMatcher = Pact.Matchers.term({
         generate: "application/json",
-        matcher:  "application/json",
+        matcher: "application/json",
     });
 
     it('requests all users', (done) => {
@@ -23,7 +24,7 @@ describe('UserService API', () => {
                 }
             },
             willRespondWith: {
-                status: 202,
+                status: 200,
                 headers: {
                     "Content-Type": contentTypeJsonMatcher
                 },
@@ -34,6 +35,7 @@ describe('UserService API', () => {
         }).then(() => {
             userService.getUsers()
                 .then(response => {
+                    // eslint-disable-next-line jest/no-conditional-expect
                     expect(response.length).toBeGreaterThanOrEqual(2);
                 })
                 .then(done)
@@ -53,7 +55,7 @@ describe('UserService API', () => {
                 }
             },
             willRespondWith: {
-                status: 202,
+                status: 200,
                 headers: {
                     "Content-Type": contentTypeJsonMatcher
                 },
@@ -80,25 +82,25 @@ describe('UserService API', () => {
             withRequest: {
                 method: 'POST',
                 path: '/restdemo/api/user',
-                body:newUser,
+                body: newUser,
                 headers: {
                     Accept: 'application/json, text/plain, */*'
                 }
             },
             willRespondWith: {
-                status: 202,
+                status: 201,
                 headers: {
                     "Content-Type": contentTypeJsonMatcher
                 },
-                body: Pact.Matchers.somethingLike(
-                    {"email": "maria@gmail.com", "id": 3, "name": "maria"}
-                )
+                body: Pact.Matchers.somethingLike(savedUser)
             }
         }).then(() => {
             userService.saveUser(newUser)
                 .then(response => {
                     // eslint-disable-next-line jest/no-conditional-expect
                     expect(response.name).toEqual(newUser.name);
+                    // eslint-disable-next-line jest/no-conditional-expect
+                    expect(response.id).toBeGreaterThan(0);
                 })
                 .then(done)
                 .catch(done);

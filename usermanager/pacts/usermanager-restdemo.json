@@ -17,7 +17,7 @@
         }
       },
       "response": {
-        "status": 202,
+        "status": 200,
         "headers": {
           "Content-Type": "application/json"
         },
@@ -54,7 +54,7 @@
         }
       },
       "response": {
-        "status": 202,
+        "status": 200,
         "headers": {
           "Content-Type": "application/json"
         },
@@ -89,14 +89,14 @@
         }
       },
       "response": {
-        "status": 202,
+        "status": 201,
         "headers": {
           "Content-Type": "application/json"
         },
         "body": {
-          "email": "maria@gmail.com",
           "id": 3,
-          "name": "maria"
+          "name": "maria",
+          "email": "maria@gmail.com"
         },
         "matchingRules": {
           "$.headers.Content-Type": {
