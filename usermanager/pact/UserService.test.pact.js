@@ -6,8 +6,8 @@ const hostUrl = require('./jest.config.js').testURL;
 describe('UserService API', () => {
     const userService = new UserService(hostUrl + "/restdemo");
     const contentTypeJsonMatcher = Pact.Matchers.term({
-        matcher: "application\\/json; *charset=utf-8",
-        generate: "application/json; charset=utf-8"
+        generate: "application/json",
+        matcher:  "application/json",
     });
 
     it('requests all users', (done) => {
@@ -24,7 +24,7 @@ describe('UserService API', () => {
             willRespondWith: {
                 status: 202,
                 headers: {
-                    'Content-Type': contentTypeJsonMatcher
+                    "Content-Type": contentTypeJsonMatcher
                 },
                 body: Pact.Matchers.somethingLike(
                     [{"email": "gpotawad@gmail.com", "id": 1, "name": "Gayatri"}, {"id": 2, "name": "Immo"}]
@@ -54,7 +54,7 @@ describe('UserService API', () => {
             willRespondWith: {
                 status: 202,
                 headers: {
-                    'Content-Type': contentTypeJsonMatcher
+                    "Content-Type": contentTypeJsonMatcher
                 },
                 body: Pact.Matchers.somethingLike(
                     {"email": "gpotawad@gmail.com", "id": 1, "name": "Gayatri"}
