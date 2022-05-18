@@ -3,8 +3,8 @@ function UserService(hostUrl: string) {
     const userEndpoint = "/api/user";
     const userApi = hostUrl + userEndpoint;
 
-    function getUserDetails (id: string) {
-        return axios.get(userApi + "/" + id)
+    function getUserDetails (id: bigint) {
+        return axios.get(userApi + "/" + id.toString())
             .then(res => {
                 const usersRes = res.data;
                 return usersRes;
