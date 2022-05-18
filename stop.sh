@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-docker exec -it websphere_liberty /liberty/wlp/bin/server stop
+docker exec websphere_liberty bash -c '//liberty/wlp/bin/server stop'

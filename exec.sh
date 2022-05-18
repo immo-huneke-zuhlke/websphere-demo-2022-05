@@ -1,3 +1,8 @@
 #!/usr/bin/env zsh
 
-docker exec -it websphere_liberty /bin/bash
+if [[ -x winpty ]]; then
+	echo "using winpty"
+else
+	export winpty=''
+fi
+winpty docker exec -it websphere_liberty //bin/bash
