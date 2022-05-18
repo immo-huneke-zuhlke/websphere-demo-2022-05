@@ -16,7 +16,7 @@ export default function UserDashboard() {
         }
     }, []);
 
-    const getUserDetails = (id: string) => {
+    const getUserDetails = (id: bigint) => {
         userService.getUserDetails(id).then(setUserDetails);
     }
 
