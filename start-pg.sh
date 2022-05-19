@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 
-blocked=$(curl --noproxy '*' http://bbc.co.uk/ | grep -i 'Page Blocked' | wc -l)
-if [[ blocked -gt 0 ]]; then
-        image=artifactory.shbmain.shb.biz/docker-registry-1.docker.io/bitnami/postgresql:11.11.0-debian-10-r31
+in_hb_network=$(nslookup artifactory.shbmain.shb.biz | grep '^Aliases:' | wc -l)
+if [[ in_hb_network -gt 0 ]]; then
+	image=artifactory.shbmain.shb.biz/docker-registry.access.redhat.com/rhscl/postgresql-10-rhel7:latest
+        echo "pulling $image from artifactory"
 else
         image=postgres:latest
+	echo "pulling $image from docker hub"
 fi
 
 cd "${0:A:h}"

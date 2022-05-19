@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-blocked=$(curl --noproxy '*' http://bbc.co.uk/ | grep -i 'Page Blocked' | wc -l)
-if [[ blocked -gt 0 ]]; then
+in_hb_network=$(nslookup artifactory.shbmain.shb.biz | grep '^Aliases:' | wc -l)
+if [[ in_hb_network -gt 0 ]]; then
         image=artifactory.shbmain.shb.biz/docker-registry-1.docker.io/ibmcom/websphere-liberty:latest
 else
         image=icr.io/appcafe/websphere-liberty:latest
