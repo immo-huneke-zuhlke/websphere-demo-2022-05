@@ -11,4 +11,4 @@ fi
 
 cd "${0:A:h}"
 
-docker run -p 5432:5432 --name docker-postgres -e POSTGRES_PASSWORD=postgrespw -d $image
+docker run -p 5432:5432 --name docker-postgres -e POSTGRESQL_DATABASE=restdummy -e POSTGRESQL_USER=restdummy -e POSTGRESQL_PASSWORD=restdummypw -e POSTGRES_PASSWORD=postgrespw $image

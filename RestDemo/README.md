@@ -60,15 +60,42 @@ run
 
 `./start-pg.sh`
 
-The container can be terminated using the command
+The container can be halted using the command
 
 `./stop-pg.sh`
 
-Note that at this point, you will lose any data
+Note that if you delete the container,
+you will lose any customisations and data
 in the database and will have to re-establish
 it next time.
 
+To re-start the container without losing any data,
+use the Docker Desktop or the following command
+(nb only include `winpty` if running this on Windows):
+
+```bash
+winpty docker start -i docker-postgres
+```
+
+## If using the RHEL version of the PostgreSQL container
+
+Once the container is up and running,
+connect to it and set the password to `postgrespw`:
+
+```bash
+$ winpty docker exec -it docker-postgres //bin/bash
+bash-4.2$ psql
+postgres=# \password
+Enter new password:
+Enter it again:
+```
+
 ## Populate the PostgreSQL database
+
+You can use the `psql` from the command line (see above)
+or use PGAdmin4 if security rules allow it.
+
+### PGAdmin4
 
 Using a local installation of PGAdmin4,
 register the database server using these
@@ -86,6 +113,8 @@ Once connected, navigate to the schema
 `restdemo` and open a psql prompt by clicking
 the icon `>_` at the top left of the PGAdmin
 window.
+
+### Initialising the database
 
 Under `RestDemo/src/main/sql` in this repository
 clone, you will find the following SQL scripts,
