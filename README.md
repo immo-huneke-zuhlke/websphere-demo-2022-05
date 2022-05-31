@@ -1,4 +1,4 @@
-# Playground for learning WebSphere Liberty and PostgreSQL
+# Playground for PACT in context of React, WebSphere Liberty and PostgreSQL
 
 ## Prerequisites
 
