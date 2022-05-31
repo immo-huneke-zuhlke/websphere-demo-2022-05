@@ -1,5 +1,21 @@
 # Playground for PACT in context of React, WebSphere Liberty and PostgreSQL
 
+## Introduction
+
+This project was developed as a proving ground for the use of WebSphere Liberty
+for Developers, backed by PostgreSQL, to support a React web application.
+
+In the course of developing the PoC, we implemented some API unit tests
+using Pact for Consumer-Driven Contract Testing. The advantages seen were that
+* the consumer (client, application) can test its data access layer without
+  requiring the back-end to be running
+* the API can be tested easily for conformance to the consumer's requirements
+* like TDD, using the consumer-driven approach means that the back end will
+  not develop any capabilities or features that are not required by the front end
+* there is potential for building all this into the CI/CD pipeline,
+  which prevents deploying any API or client application that is not
+  conformant with the API contract
+
 ## Prerequisites
 
 The examples all use IntelliJ Idea, but any other
